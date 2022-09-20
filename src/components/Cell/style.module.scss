@@ -1,0 +1,22 @@
+@import '../../scss/colors.scss';
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: $color-bg;
+    border-radius: 7px;
+
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_empty {
+        background: $color-bg-gray;
+    }
+
+}
