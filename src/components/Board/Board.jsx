@@ -3,15 +3,21 @@ import style from './style.module.scss'
 import { useState, useEffect } from 'react'
 import { getMixedArray } from '../../helpers'
 
+import { useDispatch } from 'react-redux'
+import { setCounterIncrement } from '../../redux/infoSlice'
+
 import { Cell } from '../Cell/Cell'
 
-export const Board = ({ counterIncrement, setIsCompleted }) => {
-    const [cells, setCells] = useState(getMixedArray([...Array(9).keys()]))
+export const Board = ({ setIsCompleted }) => {
+    // const [cells, setCells] = useState(getMixedArray([...Array(9).keys()]))
+    const [cells, setCells] = useState([1, 2, 3, 4, 5, 0, 7, 8, 6])
+
+    const dispatch = useDispatch()
 
     const handleClick = (index) => {
         if (isCanMove(index)) {
             moveTheCell(index)
-            counterIncrement()
+            dispatch(setCounterIncrement())
         }
     }
 
@@ -21,7 +27,6 @@ export const Board = ({ counterIncrement, setIsCompleted }) => {
     }
 
     const moveTheCell = (index) => {
-        console.log('Перемещаем')
         const arr = [...cells]
         arr[arr.indexOf(0)] = arr[index]
         arr[index] = 0
@@ -43,7 +48,9 @@ export const Board = ({ counterIncrement, setIsCompleted }) => {
 
     return (
         <div className={style.board}>
-            {cells.map((number, index) => <Cell key={index} number={number} index={index} handleClick={handleClick} />)}
+            {cells.map((number, index) =>
+                <Cell key={index} number={number} index={index} handleClick={handleClick} />
+            )}
         </div>
     )
 }

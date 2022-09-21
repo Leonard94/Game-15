@@ -1,6 +1,14 @@
 import style from './style.module.scss'
+import { useDispatch } from 'react-redux'
+import { setLevel } from '../../redux/infoSlice'
 
-export const Menu = ({ handleClickLevel }) => {
+export const Menu = () => {
+    const dispatch = useDispatch()
+
+    const handleClickLevel = (level) => {
+        dispatch(setLevel(level))
+    }
+
     return (
         <div className={style.menu}>
             <div className={style.title}>

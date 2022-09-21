@@ -1,6 +1,8 @@
 import style from './style.module.scss'
+import { useSelector } from 'react-redux'
 
-export const Stats = ({ info }) => {
+export const Stats = () => {
+    const { level, counter } = useSelector(state => state.info)
 
     const showLevel = {
         light: 'лёгкий',
@@ -13,13 +15,13 @@ export const Stats = ({ info }) => {
             <li>
                 уровень
                 <span>
-                    {showLevel[info.level]}
+                    {showLevel[level]}
                 </span>
             </li>
             <li>
                 ход
                 <span>
-                    {info.counter}
+                    {counter}
                 </span>
             </li>
         </ul>

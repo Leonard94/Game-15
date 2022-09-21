@@ -1,9 +1,7 @@
 // Fisher–Yates shuffle algorithm
 export const getMixedArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
-        // случайный индекс от 0 до i
         let j = Math.floor(Math.random() * (i + 1))
-        // меняем элементы местами
         let t = array[i]
         array[i] = array[j]
         array[j] = t
@@ -26,5 +24,12 @@ export const getDeclension = (number) => {
     }
     return 'ходов'
 }
+
+export const getTranslatedLevel = {
+    light: 'лёгком',
+    medium: 'среднем',
+    hard: 'тяжёлом'
+}
+
 
 
