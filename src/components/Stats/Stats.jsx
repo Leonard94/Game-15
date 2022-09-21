@@ -1,8 +1,6 @@
 import style from './style.module.scss'
-import { useSelector } from 'react-redux'
 
-export const Stats = () => {
-    const { level, counter } = useSelector(state => state.info)
+export const Stats = ({ level, counter }) => {
 
     const showLevel = {
         light: 'лёгкий',

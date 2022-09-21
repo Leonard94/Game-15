@@ -31,5 +31,11 @@ export const getTranslatedLevel = {
     hard: 'тяжёлом'
 }
 
+export const getCovertedLineToNumber = {
+    light: 9,
+    medium: 16,
+    hard: 25
+}
+
 
 

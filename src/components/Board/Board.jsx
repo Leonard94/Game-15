@@ -8,9 +8,11 @@ import { setCounterIncrement } from '../../redux/infoSlice'
 
 import { Cell } from '../Cell/Cell'
 
-export const Board = ({ setIsCompleted }) => {
-    // const [cells, setCells] = useState(getMixedArray([...Array(9).keys()]))
-    const [cells, setCells] = useState([1, 2, 3, 4, 5, 0, 7, 8, 6])
+export const Board = ({ setIsCompleted, levelNumber }) => {
+    const [cells, setCells] = useState(getMixedArray([...Array(levelNumber).keys()]))
+    // const [cells, setCells] = useState([1, 2, 3, 4, 5, 0, 7, 8, 6]) // Тестирование 3х3
+    // const [cells, setCells] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12]) // Тестирование 4х4
+    // const [cells, setCells] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 0, 22, 23, 24, 25, 21]) // Тестирование 5х5
 
     const dispatch = useDispatch()
 
@@ -22,8 +24,18 @@ export const Board = ({ setIsCompleted }) => {
     }
 
     const isCanMove = (index) => {
-        const zeroIndex = cells.indexOf(0)
-        return index + 1 === zeroIndex || index - 1 === zeroIndex || index - 3 === zeroIndex || index + 3 === zeroIndex
+        const emptyIndex = cells.indexOf(0)
+        const devider = {
+            9: 3,
+            16: 4,
+            25: 5
+        }
+        return (
+            index + 1 === emptyIndex ||
+            index - 1 === emptyIndex ||
+            index - devider[levelNumber] === emptyIndex ||
+            index + devider[levelNumber] === emptyIndex
+        )
     }
 
     const moveTheCell = (index) => {
@@ -46,8 +58,19 @@ export const Board = ({ setIsCompleted }) => {
         isSolved(cells)
     }, [cells])
 
+    const sizes = {
+        9: '3, 100px',
+        16: '4, 75px',
+        25: '5, 50px'
+    }
+
+    const styleForBoard = {
+        gridTemplateColumns: `repeat(${sizes[levelNumber]})`,
+        gridTemplateRows: `repeat(${sizes[levelNumber]})`
+    }
+
     return (
-        <div className={style.board}>
+        <div style={styleForBoard} className={style.board}>
             {cells.map((number, index) =>
                 <Cell key={index} number={number} index={index} handleClick={handleClick} />
             )}
