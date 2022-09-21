@@ -1,23 +1,21 @@
 @import '../../scss/colors.scss';
 @import '../../index.scss';
 
-.column {
-    display: flex;
-    flex-direction: column;
+.btn {
+    border-radius: 4px;
+    padding: 15px 45px;
+    background: $color-bg-second;
     margin-left: 60px;
-    gap: 20px;
 
-    button {
-        border-radius: 4px;
-        padding: 15px 45px;
-        background: $color-bg-second;
+    color: $color-text-second;
+    font-size: 16px;
+    font-weight: 300;
 
-        color: $color-text-second;
-        font-size: 16px;
-        font-weight: 300;
+    @media (max-width: 700px) {
+        margin: 30px 0 0 0;
+    }
 
-        &:hover {
-            @include opacity-hover()
-        }
+    &:hover {
+        @include opacity-hover()
     }
 }

@@ -11,9 +11,6 @@ export const Buttons = () => {
     }
 
     return (
-        <div className={style.column}>
-            <button onClick={goBack}>меню</button>
-            {/* <button onClick={startNewGame}>заново</button> */}
-        </div>
+        <button className={style.btn} onClick={goBack}>меню</button>
     )
 }
