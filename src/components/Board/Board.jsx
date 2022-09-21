@@ -10,6 +10,7 @@ import { Cell } from '../Cell/Cell'
 
 export const Board = ({ setIsCompleted, levelNumber }) => {
     const [cells, setCells] = useState(getMixedArray([...Array(levelNumber).keys()]))
+    console.log(cells)
     // const [cells, setCells] = useState([1, 2, 3, 4, 5, 0, 7, 8, 6]) // Тестирование 3х3
     // const [cells, setCells] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 13, 14, 15, 12]) // Тестирование 4х4
     // const [cells, setCells] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 0, 22, 23, 24, 25, 21]) // Тестирование 5х5
@@ -72,7 +73,7 @@ export const Board = ({ setIsCompleted, levelNumber }) => {
     return (
         <div style={styleForBoard} className={style.board}>
             {cells.map((number, index) =>
-                <Cell key={index} number={number} index={index} handleClick={handleClick} />
+                <Cell key={number} number={number} index={index} handleClick={handleClick} />
             )}
         </div>
     )
