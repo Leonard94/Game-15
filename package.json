@@ -2,7 +2,7 @@
   "name": "game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Leonard94.github.io/Game15",
+  "homepage": "https://Leonard94.github.io/Game-15",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@types/react": "^18.0.20",
